@@ -1,12 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.coltis.HolaMundoSpring.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import lombok.Data;
+
 
 @Data
 @Entity
@@ -19,9 +18,17 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
-    private String nombre; 
-    private String apellido; 
-    private String email; 
-    private String telefono; 
-
+    
+    @NotEmpty
+        private String nombre; // El nombre de la persona
+    
+    @NotEmpty
+    @Email
+    private String apellido; // El apellido de la persona
+    
+    @NotEmpty
+    private String email; // El correo electrónico de la persona
+    
+    @NotEmpty
+    private String telefono; // El número de teléfono de la persona
 }
